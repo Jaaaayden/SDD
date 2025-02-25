@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Biotech Room.unity
+    guid: 1b6599f6bd5f143b89583de5ce08dc1a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0f2b7f2f3f1d4fe4da1b0a3e0b36f561, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5dbeb04c9be796644a8a8dd2b061c568, type: 2}
