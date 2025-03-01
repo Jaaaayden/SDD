@@ -6325,6 +6325,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7047446270206662938, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047446270206662938, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7047446270206662940, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
       propertyPath: m_Name
       value: Wire Start
@@ -7033,6 +7041,14 @@ PrefabInstance:
     - target: {fileID: 7047446270206662918, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047446270206662938, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047446270206662938, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 7047446270206662940, guid: e6df2e9876b4f36468e11376717f9c5b, type: 3}
       propertyPath: m_Name
