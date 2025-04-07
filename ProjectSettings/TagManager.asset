@@ -6,11 +6,14 @@ TagManager:
   tags:
   - Lefr Hand
   - Right Hand
+  - Axe
+  - Tree
+  - Terrain
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NonGrabbable
   - Water
   - UI
   - 
