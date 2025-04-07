@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapDistance: 0.8
-  breakDistance: 1.5
+  breakDistance: 2.4
   snapForce: 10
