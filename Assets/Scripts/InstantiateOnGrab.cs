@@ -113,7 +113,7 @@ public class InstantiateOnGrab : MonoBehaviour
             {
                 // Keep at ray hit point
                 grabbable.movementType = XRBaseInteractable.MovementType.Instantaneous;
-                grabbable.trackPosition = false;
+                grabbable.trackPosition = false; 
                 grabbable.trackRotation = false;
                 grabbable.smoothPosition = false;
                 grabbable.smoothRotation = false;
@@ -121,17 +121,21 @@ public class InstantiateOnGrab : MonoBehaviour
         }
         else
         {
-            // For direct grab, use default dynamic attach settings
+            // For direct grab, ensure tracking is enabled for both position and rotation
             grabbable.attachPointCompatibilityMode = XRGrabInteractable.AttachPointCompatibilityMode.Default;
-            grabbable.movementType = XRBaseInteractable.MovementType.Instantaneous;
-            grabbable.trackPosition = true;
+            grabbable.movementType = XRBaseInteractable.MovementType.Instantaneous; // Try VelocityTracking if this doesn't work
+            
+            // These are critical for position tracking
+            grabbable.trackPosition = true;  // Ensure this is true
             grabbable.trackRotation = true;
+            
+            // These settings help with smoothness but with Instantaneous they shouldn't matter much
             grabbable.smoothPosition = true;
             grabbable.smoothRotation = true;
-            grabbable.smoothPositionAmount = 5f;
-            grabbable.smoothRotationAmount = 5f;
-            grabbable.tightenPosition = 0.5f;
-            grabbable.tightenRotation = 0.5f;
+            grabbable.smoothPositionAmount = 8f;  // Increased for faster response
+            grabbable.smoothRotationAmount = 8f;
+            grabbable.tightenPosition = 0.1f;  // Lower value means less lag
+            grabbable.tightenRotation = 0.1f;
         }
     }
     
@@ -147,11 +151,11 @@ public class InstantiateOnGrab : MonoBehaviour
         if (isRayInteractor && interactor is XRRayInteractor rayInteractor)
         {
             // For ray interactors, get the actual hit point
-            // Fixed the TryGetHitInfo method call with correct parameter types
-            if (rayInteractor.TryGetHitInfo(out Vector3 hitPosition, out Quaternion hitRotation, out int _, out bool _))
+            if (rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hitInfo))
             {
-                grabPosition = hitPosition;
-                grabRotation = hitRotation;
+                grabPosition = hitInfo.point;
+                // Use the rotation from the hit normal
+                grabRotation = Quaternion.LookRotation(hitInfo.normal, rayInteractor.transform.up);
             }
             
             // If we want to pull to hand
@@ -179,24 +183,34 @@ public class InstantiateOnGrab : MonoBehaviour
         }
         else
         {
-            // For direct grab, set the attach point where the controller is
-            if (newGrabbable.attachTransform == null)
+            // For direct grab, set the attach point correctly
+            GameObject attachPoint = new GameObject("Direct Attach Point");
+            attachPoint.transform.SetParent(newGrabbable.transform, false);
+            
+            // Calculate local position & rotation for the attachment point
+            Vector3 localGrabPoint = newGrabbable.transform.InverseTransformPoint(interactor.transform.position);
+            attachPoint.transform.localPosition = localGrabPoint;
+            
+            Quaternion localGrabRotation = Quaternion.Inverse(newGrabbable.transform.rotation) * interactor.transform.rotation;
+            attachPoint.transform.localRotation = localGrabRotation;
+            
+            // Set the attach transform on the grabbable
+            newGrabbable.attachTransform = attachPoint.transform;
+            
+            // Explicitly set the grab pose for direct interaction
+            if (newGrabbable is XRGrabInteractable grabInteractable)
             {
-                GameObject attachPoint = new GameObject("Direct Attach Point");
-                attachPoint.transform.SetParent(newGrabbable.transform, false);
-                
-                // Calculate local position & rotation for the attachment point
-                Vector3 localGrabPoint = newGrabbable.transform.InverseTransformPoint(grabPosition);
-                attachPoint.transform.localPosition = localGrabPoint;
-                
-                Quaternion localGrabRotation = Quaternion.Inverse(newGrabbable.transform.rotation) * grabRotation;
-                attachPoint.transform.localRotation = localGrabRotation;
-                
-                newGrabbable.attachTransform = attachPoint.transform;
+                // Ensure position tracking for direct grabs
+                newGrabbable.trackPosition = true;
+                newGrabbable.trackRotation = true;
             }
         }
         
-        // Select the object
+        // Debug message to confirm settings
+        Debug.Log($"Configured grab: trackPos={newGrabbable.trackPosition}, trackRot={newGrabbable.trackRotation}, " +
+                  $"movementType={newGrabbable.movementType}, attachTransform={newGrabbable.attachTransform != null}");
+        
+        // Select the object with the interactor
         interactor.interactionManager.SelectEnter(interactor, (IXRSelectInteractable)newGrabbable);
     }
     
