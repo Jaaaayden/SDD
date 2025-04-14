@@ -1,32 +1,94 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro; 
+using TMPro;
 
 public class BuildZone : MonoBehaviour
 {
-    public TextMeshProUGUI buildZoneText; 
-    public LadderBuilder ladderBuilder;
-    private int plankCount = 0;
+    public TextMeshProUGUI buildZoneText;
+    public TextMeshProUGUI ladderBuiltText;
+    public int totalLaddersToBuild = 10;
+    public List<LadderBuilder> ladderBuilders; 
+    private int builtLadders = 0;
+    public GameObject buildZoneVisual;
+    private int currentPlanks = 0;
     private HashSet<GameObject> enteredPlanks = new HashSet<GameObject>();
-    
+    public AudioClip soundClip3;
+    private AudioSource audioSource;
+
     private void Start()
     {
-        UpdateBuildZoneText();
+        audioSource = GetComponent<AudioSource>();
+        UpdateBuildZoneText(0);
+        UpdateLadderText();
+        ActivateNextLadder();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Plank") && !enteredPlanks.Contains(other.gameObject))
+        if (!other.CompareTag("Plank") || enteredPlanks.Contains(other.gameObject)) return;
+
+        enteredPlanks.Add(other.gameObject);
+        currentPlanks++;
+        UpdateBuildZoneText(currentPlanks);
+
+        if (currentPlanks >= 3)
         {
-            enteredPlanks.Add(other.gameObject);
-            plankCount++;
-            UpdateBuildZoneText();
-            ladderBuilder.CheckBuildProgress(plankCount);
+            if (soundClip3 != null)
+            {
+                AudioSource.PlayClipAtPoint(soundClip3, transform.position);
+            }
+            StartCoroutine(BuildLadderWithDelay(3f)); 
+        }
+    }
+    
+    IEnumerator BuildLadderWithDelay(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+
+        ladderBuilders[builtLadders].BuildLadder();
+        builtLadders++;
+
+        foreach (GameObject plank in enteredPlanks)
+        {
+            Destroy(plank);
+        }
+
+        enteredPlanks.Clear();
+        currentPlanks = 0;
+        UpdateLadderText();
+
+        if (builtLadders >= totalLaddersToBuild)
+        {
+            if (buildZoneVisual != null)
+                buildZoneVisual.SetActive(false);
+
+            gameObject.SetActive(false); 
+        }
+        else
+        {
+            ActivateNextLadder();
+            UpdateBuildZoneText(0);
         }
     }
 
-    private void UpdateBuildZoneText()
+    private void ActivateNextLadder()
     {
-        buildZoneText.text = "Planks dropped: " + plankCount + "/3";
+        if (builtLadders < ladderBuilders.Count)
+        {
+            LadderBuilder nextLadder = ladderBuilders[builtLadders];
+
+            nextLadder.gameObject.SetActive(true);
+        }
+    }
+
+    public void UpdateBuildZoneText(int currentPlanks)
+    {
+        buildZoneText.text = "Planks dropped: " + currentPlanks + "/3";
+    }
+
+    public void UpdateLadderText()
+    {
+        ladderBuiltText.text = "Ladders built: " + builtLadders + "/10";
     }
 }

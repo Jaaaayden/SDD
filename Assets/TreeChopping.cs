@@ -35,7 +35,7 @@ public class TreeChopping : MonoBehaviour
         }
     }
 
-    void FallDown()
+    private void FallDown()
     {
         Debug.Log("Tree falls!");
         upperTreeRb.isKinematic = false;

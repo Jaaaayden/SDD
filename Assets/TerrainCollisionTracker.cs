@@ -24,8 +24,9 @@ public class TerrainCollisionTracker : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tree") && !choppedTrees.Contains(collision.gameObject)) 
         {
+            choppedTrees.Add(collision.gameObject);
             collidingObjects++;
-            if (soundClip != null && collision.contactCount > 0)
+            if (soundClip != null && collision.contactCount > 0) // .contactCount prevents edge case with weird prefabs
             {
                 Vector3 impactPoint = collision.contacts[0].point;
                 AudioSource.PlayClipAtPoint(soundClip, impactPoint, 1.5f);
@@ -64,6 +65,6 @@ public class TerrainCollisionTracker : MonoBehaviour
 
     private void UpdateCollisionText()
     {
-        collisionCounterText.text = "Chopped: " + collidingObjects;
+        collisionCounterText.text = "Trees chopped: " + collidingObjects;
     }
 }
