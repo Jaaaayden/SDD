@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class InstantiateOnGrab : MonoBehaviour
@@ -20,6 +21,8 @@ public class InstantiateOnGrab : MonoBehaviour
     [Tooltip("How quickly to pull the object to hand (if enabled)")]
     public float pullSpeed = 10f;
     
+    [Tooltip("Debug Textbox")]
+    public TextMeshPro debugTextbox;
     private XRGrabInteractable grabInteractable;
     
     void Awake()
@@ -53,6 +56,7 @@ public class InstantiateOnGrab : MonoBehaviour
         // Determine spawn position & rotation
         Vector3 spawnPosition;
         Quaternion spawnRotation;
+
         
         if (spawnPoint)
         {
@@ -88,9 +92,20 @@ public class InstantiateOnGrab : MonoBehaviour
     
     private void ConfigureGrabbableForInteractor(XRGrabInteractable grabbable, XRBaseInteractor interactor, bool isRayInteractor)
     {
+        /*bool farEnough = true;
+        if(isRayInteractor && interactor is XRRayInteractor rayInteractor)
+        {
+            rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit);
+            debugTextbox.text = hit.distance.ToString();
+            if(hit.distance <= 2){
+                farEnough = false;
+            }
+        }*/
+        
         // For ray interactors, we might want different movement settings
         if (isRayInteractor)
         {
+            
             // Configure for ray-based grabbing
             if (pullToHand)
             {
