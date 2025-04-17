@@ -110,7 +110,7 @@ public class InstantiateOnGrab : MonoBehaviour
             if (pullToHand)
             {
                 // Use kinematic for smooth motion to hand
-                grabbable.movementType = XRBaseInteractable.MovementType.Kinematic;
+                grabbable.movementType = XRBaseInteractable.MovementType.Instantaneous;
                 
                 // Fast but smooth follow settings
                 grabbable.smoothPosition = true;
@@ -137,7 +137,7 @@ public class InstantiateOnGrab : MonoBehaviour
         else
         {
             // For direct grab, ensure tracking is enabled for both position and rotation
-            grabbable.attachPointCompatibilityMode = XRGrabInteractable.AttachPointCompatibilityMode.Default;
+            
             grabbable.movementType = XRBaseInteractable.MovementType.Instantaneous; // Try VelocityTracking if this doesn't work
             
             // These are critical for position tracking
@@ -189,7 +189,7 @@ public class InstantiateOnGrab : MonoBehaviour
                 attachPoint.transform.localRotation = localHitRotation;
                 
                 // Assign as attach transform
-                newGrabbable.attachTransform = attachPoint.transform;
+                //newGrabbable.attachTransform = attachPoint.transform;
                 
                 // Create a component to move this to the hand over time
                 var pullToHandScript = attachPoint.AddComponent<PullToHand>();
