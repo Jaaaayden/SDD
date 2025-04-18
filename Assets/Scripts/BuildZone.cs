@@ -7,11 +7,12 @@ public class BuildZone : MonoBehaviour
 {
     public TextMeshProUGUI buildZoneText;
     public TextMeshProUGUI ladderBuiltText;
-    public int totalLaddersToBuild = 10;
     public List<LadderBuilder> ladderBuilders; 
-    private int builtLadders = 0;
-    public GameObject buildZoneVisual;
+    public List<Collider> climbZones;
     private int currentPlanks = 0;
+    private int builtLadders = 0;
+    public int totalLaddersToBuild = 10;
+    public GameObject buildZoneVisual;
     private HashSet<GameObject> enteredPlanks = new HashSet<GameObject>();
     public AudioClip soundClip3;
     private AudioSource audioSource;
@@ -47,6 +48,7 @@ public class BuildZone : MonoBehaviour
         yield return new WaitForSeconds(delaySeconds);
 
         ladderBuilders[builtLadders].BuildLadder();
+        ActivateClimbZone();
         builtLadders++;
 
         foreach (GameObject plank in enteredPlanks)
@@ -80,6 +82,13 @@ public class BuildZone : MonoBehaviour
 
             nextLadder.gameObject.SetActive(true);
         }
+    }
+
+    private void ActivateClimbZone() // this is called before builtLadders is incremented
+    {
+        Collider collider = climbZones[builtLadders];
+
+        collider.enabled = true;
     }
 
     public void UpdateBuildZoneText(int currentPlanks)
