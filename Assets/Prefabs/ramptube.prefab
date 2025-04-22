@@ -117,7 +117,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
@@ -748,6 +748,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: snapForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: snapDistance
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: breakDistance
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
 --- !u!4 &6530538819498956801 stripped
@@ -809,6 +821,18 @@ PrefabInstance:
     - target: {fileID: 5539590484343961286, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: snapForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: snapDistance
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
+      propertyPath: breakDistance
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}

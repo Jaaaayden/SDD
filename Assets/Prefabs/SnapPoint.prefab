@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88acff271f7f86945b2001cbb55df532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapDistance: 0.8
+  snapDistance: 0.08
   breakDistance: 2.4
   snapForce: 10
+  positionSnapSpeed: 10
+  rotationSnapSpeed: 10
