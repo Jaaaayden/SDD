@@ -11,7 +11,7 @@ public class TreeChopping : MonoBehaviour
     public AudioClip soundClip;     
     private AudioSource audioSource;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (soundClip != null)

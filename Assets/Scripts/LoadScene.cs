@@ -7,7 +7,10 @@ public class LoadScene : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        LoadTheScene();
+        if (other.CompareTag("Player"))
+        {
+            LoadTheScene();
+        }
     }
 
     private void LoadTheScene()

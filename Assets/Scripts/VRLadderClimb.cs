@@ -22,6 +22,15 @@ public class VRLadderClimb : MonoBehaviour
     private bool isClimbing = false;
     private bool cameraLocked = false;
 
+    public AudioClip soundClip6;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = xrRig.AddComponent<AudioSource>();
+        audioSource.clip = soundClip6;
+    }
+
     private void OnEnable()
     {
         if (ButtonY != null) ButtonY.action.Enable();
@@ -42,14 +51,14 @@ public class VRLadderClimb : MonoBehaviour
         }
     }
 
-    void StartClimbing()
+    private void StartClimbing()
     {
         isClimbing = true;
         LockCameraToLadder();
         DisableLocomotion();
     }
 
-    void LockCameraToLadder()
+    private void LockCameraToLadder()
     {
         cameraLocked = true;
 
@@ -82,7 +91,7 @@ public class VRLadderClimb : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (!isClimbing) return;
 
@@ -93,7 +102,10 @@ public class VRLadderClimb : MonoBehaviour
         if (yPressed || bPressed) 
         {
             xrRig.transform.position += direction * climbSpeed * Time.deltaTime;
-
+            if (audioSource != null && !audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             if (xrRig.transform.position.y >= ladderTop.position.y)
             {
                 StartCoroutine(WalkToPlatform());
@@ -126,7 +138,7 @@ public class VRLadderClimb : MonoBehaviour
         directionAwayFromLadder.y = 0f;
 
         Quaternion desiredRotation = Quaternion.LookRotation(directionAwayFromLadder, Vector3.up);
-        float desiredYaw = desiredRotation.eulerAngles.y;
+        float desiredYaw = desiredRotation.eulerAngles.y; // gpt helped with yaw offset
         float yawOffset = desiredYaw - cameraYaw;
 
         Vector3 currentEuler = xrRig.transform.eulerAngles;
@@ -136,13 +148,13 @@ public class VRLadderClimb : MonoBehaviour
         EnableLocomotion();
     }
 
-    void DisableLocomotion()
+    private void DisableLocomotion()
     {
         if (moveProvider != null) moveProvider.enabled = false;
         if (turnProvider != null) turnProvider.enabled = false;
     }
 
-    void EnableLocomotion()
+    private void EnableLocomotion()
     {
         if (moveProvider != null) moveProvider.enabled = true;
         if (turnProvider != null) turnProvider.enabled = true;
