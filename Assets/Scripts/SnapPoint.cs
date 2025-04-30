@@ -6,7 +6,7 @@ public class SnapPoint : MonoBehaviour
     [Header("Snap Settings")]
     public float snapDistance = 0.1f;
     public float breakDistance = 0.15f;
-    public float snapForce = 50f;
+    public float snapForce = 150f;
     public bool showDebug = true;
 
     [Header("References")]
@@ -17,8 +17,15 @@ public class SnapPoint : MonoBehaviour
     private bool isSnapped = false;
     private FixedJoint joint;
 
+    [Header("Sound Effects")]
+
+    public AudioSource audioSource;
+    public AudioClip connectSFX;
+    public AudioClip disconnectSFX;
+
     void Awake()
-    {
+    {   
+        audioSource = GetComponent<AudioSource>();
         if (parentGrabbable == null)
             parentGrabbable = GetComponentInParent<XRGrabInteractable>();
         
@@ -116,6 +123,10 @@ public class SnapPoint : MonoBehaviour
         joint.connectedBody = point.parentRigidbody;
         joint.breakForce = snapForce;
         joint.enableCollision = true;
+        
+
+        // Play sound effect
+        audioSource.PlayOneShot(connectSFX);
 
         if (showDebug)
         {
@@ -147,6 +158,9 @@ public class SnapPoint : MonoBehaviour
             Destroy(joint);
             joint = null;
         }
+
+        //Play sound effect
+        audioSource.PlayOneShot(disconnectSFX);
 
         if (showDebug) Debug.Log("[SnapPoint] Disconnected from point", this);
     }
