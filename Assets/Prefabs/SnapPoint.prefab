@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 109265280284477465}
   - component: {fileID: 1449108989227753147}
   - component: {fileID: 8359657111372111234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,5 +113,4 @@ MonoBehaviour:
   snapDistance: 0.08
   breakDistance: 2.4
   snapForce: 10
-  positionSnapSpeed: 10
-  rotationSnapSpeed: 10
+  showDebug: 1
