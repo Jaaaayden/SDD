@@ -16,12 +16,15 @@ public class MarbleSpawner : MonoBehaviour
             marbleInstance = Instantiate(marblePrefab, spawnPoint);
         }
         else{
-            text.text = marbleInstance.name;
+            DestroyMarble();
+            text.text = "Marble Respawned!";
+            marbleInstance = Instantiate(marblePrefab, spawnPoint);
         }
     } 
 
     public void DestroyMarble(){
+        marbleInstance.GetComponent<AudioSource>().Play();
         Destroy(marbleInstance);
-        marbleInstance = null;
+        text.text = "Marble Destroyed!";
     }
 }

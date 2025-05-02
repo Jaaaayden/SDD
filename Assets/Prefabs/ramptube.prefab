@@ -1022,7 +1022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
       propertyPath: snapForce
-      value: 5000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
       propertyPath: connectSFX
@@ -1213,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
       propertyPath: snapForce
-      value: 5000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
       propertyPath: connectSFX

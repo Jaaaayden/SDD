@@ -629,6 +629,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1081386017739521917, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_text
+      value: 'Grab to spawn a tube.
+
+        Connect at green joints.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081386017739521917, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_margin.w
+      value: -3.529332
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081386017739521917, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_margin.x
+      value: -9.372719
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081386017739521917, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_margin.z
+      value: -8.240855
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081386017739521917, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1356196479467370987, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_Name
       value: ramptube (1)
@@ -643,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1844783903491613521, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.187
+      value: -0.216
       objectReference: {fileID: 0}
     - target: {fileID: 1844783903491613521, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_LocalPosition.y
@@ -651,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1844783903491613521, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.316
+      value: 0.489
       objectReference: {fileID: 0}
     - target: {fileID: 1844783903491613521, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_LocalRotation.w
@@ -713,6 +735,10 @@ PrefabInstance:
       propertyPath: m_FirstHoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4510449902126788659, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4525638508009627299, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -720,6 +746,18 @@ PrefabInstance:
     - target: {fileID: 4525638508009627299, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194695647612673617, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194695647612673617, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194695647612673617, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.79
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2982611700575180203, guid: 37ec09bc951a5d3418bd7e29a6872599, type: 3}
@@ -1703,7 +1741,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1732,7 +1770,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -3.7890863, w: -3.4560976}
+  m_margin: {x: 0, y: 0, z: -5.885906, w: -3.4560976}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -2269,7 +2307,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258956000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
@@ -3674,6 +3712,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationDuration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_IgnoreHoverPriorityEvents
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877389616118560587, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
+      propertyPath: m_ClickAnimationCurve.m_ConstantValue.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 4616165200164398447, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4499,11 +4569,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3284371076357524388, guid: ce9acf9c9a9e6cd43837da03f5065049, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4834596628429512597, guid: ce9acf9c9a9e6cd43837da03f5065049, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834596628429512597, guid: ce9acf9c9a9e6cd43837da03f5065049, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce9acf9c9a9e6cd43837da03f5065049, type: 3}
@@ -4537,6 +4611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flattube
       objectReference: {fileID: 0}
+    - target: {fileID: 1619453520425704202, guid: ad80856b35b44d644ab89f521df7ab5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2103925159626441136, guid: ad80856b35b44d644ab89f521df7ab5b, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -4551,7 +4629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2103925159626441136, guid: ad80856b35b44d644ab89f521df7ab5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3147
+      value: 0.491
       objectReference: {fileID: 0}
     - target: {fileID: 2103925159626441136, guid: ad80856b35b44d644ab89f521df7ab5b, type: 3}
       propertyPath: m_LocalRotation.w
