@@ -6,6 +6,7 @@ public class MarbleSpawner : MonoBehaviour
 {
     public GameObject marblePrefab;
     public Transform spawnPoint;
+    public AudioClip soundClip;
     private GameObject marbleInstance;
 
     public TMP_Text text;
@@ -14,6 +15,7 @@ public class MarbleSpawner : MonoBehaviour
     public void SpawnMarble(){
         if(marbleInstance == null){
             marbleInstance = Instantiate(marblePrefab, spawnPoint);
+            text.text = "Marble Respawned!";
         }
         else{
             DestroyMarble();
@@ -23,8 +25,9 @@ public class MarbleSpawner : MonoBehaviour
     } 
 
     public void DestroyMarble(){
-        marbleInstance.GetComponent<AudioSource>().Play();
-        Destroy(marbleInstance);
+        AudioSource audioSource = marbleInstance.GetComponent<AudioSource>();
+        AudioSource.PlayClipAtPoint(soundClip, marbleInstance.transform.position);
+        Destroy(marbleInstance);    
         text.text = "Marble Destroyed!";
     }
 }
