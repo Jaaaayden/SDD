@@ -6,14 +6,14 @@ An interactive VR game designed to help incoming CAMS students discover their in
 1. Clone the repository
 Clone this GitHub repository to your local machine:
 ```
-    git clone https://github.com/Jaaaayden/SDD
-    cd SDD
+git clone https://github.com/Jaaaayden/SDD
+cd SDD
 ```
 
 2. Open in Unity
 Open Unity Hub and add the cloned folder as a new project. Make sure you're using:
 ```
-    Unity version: 2021.3.39f1
+Unity version: 2021.3.39f1
 ```
 If you don’t have this version installed, you can download it via Unity Hub → Installs → Add.
 
@@ -51,7 +51,8 @@ Unity will compile and deploy the app. After completion, the application will la
 
 ```
 • Headset not detected?
-    → Make sure USB debugging (unplug and replug to get notification again) is allowed and the headset is in Developer Mode
+    → Make sure USB debugging (unplug and replug to get notification again)
+    is allowed and the headset is in Developer Mode
 ```
 or
 ```
