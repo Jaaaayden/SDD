@@ -84,5 +84,7 @@ Special thanks to:
 - Graphic/sound design
 ### Justin Sipraseuth and Ashley Portillo
 - Project managers
+### Chris Chen
+- Data analyst
 ### August Montgomery, Megan Lee, and Noemi Alonso
 - Marketing
