@@ -1,22 +1,29 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
 using TMPro;
 
 public class FlowchartManager : MonoBehaviour
 {
-    public TextMeshProUGUI statusText; 
-    public Transform xrRig;          
+    public Transform xrRig;
+    private AudioSource audioSource;
+    public AudioClip tree;
+    public GameObject box;
     private int totalConnectionsNeeded = 6;
     private int currentConnections = 0;
+    private bool complete = false;
 
-    private void Start()
+    public void Update()
     {
-        UpdateStatus();
+        if (audioSource != null && xrRig != null)
+        {
+            audioSource.transform.position = xrRig.position;
+        }
     }
 
     public void RegisterConnection()
     {
         currentConnections++;
-        UpdateStatus();
 
         if (currentConnections >= totalConnectionsNeeded)
         {
@@ -27,22 +34,24 @@ public class FlowchartManager : MonoBehaviour
     public void UnregisterConnection()
     {
         currentConnections = Mathf.Max(0, currentConnections - 1);
-        UpdateStatus();
-    }
-
-    private void UpdateStatus()
-    {
-        if (statusText != null)
-        {
-            statusText.text = $"Connections: {currentConnections}/{totalConnectionsNeeded}";
-        }
     }
 
     private void PuzzleComplete()
     {
-        if (xrRig != null)
+        if (xrRig != null && !complete)
         {
-            xrRig.position = Vector3.zero;  
+            complete = true;
+
+            xrRig.position = Vector3.zero;
+
+            box.SetActive(false);
+
+            GameObject audioObject = new GameObject("MovingAudioSource"); // gpt idea
+            audioSource = audioObject.AddComponent<AudioSource>();
+
+            audioSource.clip = tree;
+            audioSource.spatialBlend = 1.7f;
+            audioSource.Play();
         }
     }
 

@@ -22,7 +22,7 @@ public class TerrainCollisionTracker : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Tree") && !choppedTrees.Contains(collision.gameObject)) 
+        if (collision.gameObject.CompareTag("Tree") && !choppedTrees.Contains(collision.gameObject))
         {
             choppedTrees.Add(collision.gameObject);
             collidingObjects++;
@@ -33,6 +33,7 @@ public class TerrainCollisionTracker : MonoBehaviour
             }
             UpdateCollisionText();
             StartCoroutine(SpawnWithDelay());
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Plank")) 

@@ -5,18 +5,14 @@ public class BlockSnapChecker : MonoBehaviour
 {
     public string expectedTag; 
     public FlowchartManager puzzleManager;
-    public TextMeshProUGUI debugText;
     private bool isConnected = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        debugText.text = other.gameObject.tag + expectedTag;
         if (!isConnected && other.CompareTag(expectedTag))
         {
             isConnected = true;
             puzzleManager.RegisterConnection();
-            if (debugText != null)
-                debugText.text = $"{expectedTag} snapped in!";
         }
     }
 
@@ -40,8 +36,6 @@ public class BlockSnapChecker : MonoBehaviour
             {
                 isConnected = false;
                 puzzleManager.UnregisterConnection();
-                if (debugText != null)
-                    debugText.text = $"{expectedTag} removed!";
             }
         }
     }
