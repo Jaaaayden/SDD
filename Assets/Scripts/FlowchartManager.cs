@@ -13,7 +13,7 @@ public class FlowchartManager : MonoBehaviour
     private int currentConnections = 0;
     private bool complete = false;
 
-    public void Update()
+    private void Update()
     {
         if (audioSource != null && xrRig != null)
         {

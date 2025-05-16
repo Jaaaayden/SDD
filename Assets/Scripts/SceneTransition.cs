@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     private AudioSource audioSource;
-    public Animator fadeAnimator;
     public AudioClip helicopterAudio;
     public Transform xrRig;
     public float delayBeforeLoad = 5f;
@@ -27,11 +26,6 @@ public class SceneTransition : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(helicopterAudio, xrRig.position);
             audioPlayed = true;
-        }
-
-        if (fadeAnimator != null)
-        {
-            fadeAnimator.SetTrigger("FadeOut");
         }
 
         yield return new WaitForSeconds(delayBeforeLoad);
