@@ -4,6 +4,7 @@ An interactive VR game designed to help incoming CAMS students discover their in
 # Setup Instructions
 
 1. Clone the repository
+   
 Clone this GitHub repository to your local machine:
 ```
 git clone https://github.com/Jaaaayden/SDD
@@ -11,6 +12,7 @@ cd SDD
 ```
 
 2. Open in Unity
+   
 Open Unity Hub and add the cloned folder as a new project. Make sure you're using:
 ```
 Unity version: 2021.3.39f1
