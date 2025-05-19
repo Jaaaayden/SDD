@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8463738286797635778}
   - component: {fileID: 109265280284477465}
   - component: {fileID: 1449108989227753147}
-  - component: {fileID: 8359657111372111234}
+  - component: {fileID: 6242620842617979478}
   m_Layer: 8
   m_Name: SnapPoint
   m_TagString: Untagged
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: -0.000000022351744, y: 0, z: 0.000000014901161}
---- !u!114 &8359657111372111234
+--- !u!114 &6242620842617979478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,10 +107,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802610119772840029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88acff271f7f86945b2001cbb55df532, type: 3}
+  m_Script: {fileID: 11500000, guid: 28f9aee49f1b8d6499e212b7e66f1e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapDistance: 0.08
-  breakDistance: 2.4
-  snapForce: 10
-  showDebug: 1
+  snapPointObj: {fileID: 1802610119772840029}
+  snapPoint: {fileID: 0}
