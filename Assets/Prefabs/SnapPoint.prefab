@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 109265280284477465}
   - component: {fileID: 1449108989227753147}
   - component: {fileID: 6242620842617979478}
+  - component: {fileID: 3292828716023128346}
   m_Layer: 8
   m_Name: SnapPoint
   m_TagString: Untagged
@@ -112,3 +113,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapPointObj: {fileID: 1802610119772840029}
   snapPoint: {fileID: 0}
+--- !u!114 &3292828716023128346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802610119772840029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e67a2d27f99f94ebc5fb874ded1ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapPoint: {fileID: 1802610119772840029}
+  snapPointOffset: {x: 0, y: 0, z: 0}

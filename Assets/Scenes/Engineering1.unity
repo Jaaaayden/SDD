@@ -5318,7 +5318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4212006783587223750 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1619453520425704202, guid: ad80856b35b44d644ab89f521df7ab5b, type: 3}

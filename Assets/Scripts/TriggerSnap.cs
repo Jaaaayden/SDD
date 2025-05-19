@@ -44,7 +44,7 @@ public class TriggerSnap : MonoBehaviour
 
         if (currentZone != null)
         {
-            transform.position = currentZone.snapPoint.position;
+            transform.position = currentZone.snapPoint.position + new Vector3(0, transform.GetChild(0).GetComponent<Collider>().bounds.extents.y, transform.GetChild(0).GetComponent<Collider>().bounds.extents.z);
             transform.rotation = currentZone.snapPoint.parent.rotation;
         }
     }
