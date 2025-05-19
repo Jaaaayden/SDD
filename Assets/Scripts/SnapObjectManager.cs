@@ -35,7 +35,7 @@ public class SnapObjectManager : MonoBehaviour
 
         FixedJoint joint = thisRB.gameObject.AddComponent<FixedJoint>();
         joint.connectedBody = otherRB;
-        joint.breakForce = snapForce;
+        //joint.breakForce = snapForce;
 
         audioSource.PlayOneShot(connectSFX);
         activeJoints.Add(joint);

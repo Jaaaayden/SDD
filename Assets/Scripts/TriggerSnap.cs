@@ -8,14 +8,9 @@ public class TriggerSnap : MonoBehaviour
     private SnapZone currentZone = null;
     private XRGrabInteractable grab;
     private Transform interactorTransform;
-    private Vector3 initialOffset;
-    private float originalZ;
-    public AudioClip soundClip5;
-    private AudioSource audioSource;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         grab = GetComponent<XRGrabInteractable>();
         grab.selectEntered.AddListener(OnGrab);
         grab.selectExited.AddListener(OnRelease);
@@ -50,11 +45,7 @@ public class TriggerSnap : MonoBehaviour
         if (currentZone != null)
         {
             transform.position = currentZone.snapPoint.position;
-            transform.rotation = currentZone.snapPoint.rotation;
-            if (soundClip5 != null)
-            {
-                AudioSource.PlayClipAtPoint(soundClip5, interactorTransform.position);
-            }
+            transform.rotation = currentZone.snapPoint.parent.rotation;
         }
     }
 
