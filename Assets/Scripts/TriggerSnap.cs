@@ -8,13 +8,14 @@ public class TriggerSnap : MonoBehaviour
 {
     private SnapZone currentZone = null;
     private XRGrabInteractable grab;
-    private Transform interactorTransform;
+    private GameObject[] attachPoints;
     public TextMeshPro text;
     private void Awake()
     {
         grab = GetComponent<XRGrabInteractable>();
         grab.selectEntered.AddListener(OnGrab);
         grab.selectExited.AddListener(OnRelease);
+        attachPoints = new GameObject[] {transform.GetChild(1).gameObject, transform.GetChild(2).gameObject};
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -36,30 +37,27 @@ public class TriggerSnap : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        interactorTransform = args.interactorObject.transform;
+
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
-        interactorTransform = null;
 
         if (currentZone != null)
         {
-            Vector3 offset = Vector3.zero;
-            try
+            int index = 1;
+            Vector3[] distVectors = new Vector3[] {currentZone.snapPoint.position - attachPoints[0].transform.position, currentZone.snapPoint.position - attachPoints[1].transform.position};
+            float distDiff = Vector3.Magnitude(distVectors[0]) - Vector3.Magnitude(distVectors[1]);
+            if (distDiff<0)
+                index = 0;
+            transform.rotation = currentZone.snapPoint.parent.rotation;
+            if (index == 1)
             {
-
-                // Use localScale instead of collider bounds to avoid rotation affecting extents
-                Vector3 localExtents = transform.GetChild(0).GetComponent<Collider>().bounds.size * 0.5f;
-                offset = new Vector3(localExtents.x, localExtents.y * 2, 0);
-                text.text = offset.ToString();
+                transform.Rotate(0, 180, 0, Space.Self);
             }
-            catch (System.Exception e)
-            {
-                text.text = e.ToString();
-            }
-            transform.position = currentZone.snapPoint.position + offset;
-            transform.rotation = currentZone.snapPoint.parent.rotation; 
+            distVectors = new Vector3[] {currentZone.snapPoint.position - attachPoints[0].transform.position, currentZone.snapPoint.position - attachPoints[1].transform.position};
+            transform.position += distVectors[index];
+             
         }
     }
 
