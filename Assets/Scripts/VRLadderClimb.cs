@@ -99,7 +99,7 @@ public class VRLadderClimb : MonoBehaviour
         bool bPressed = ButtonB != null && ButtonB.action.IsPressed();
         Vector3 direction = (ladderTop.position - xrRig.transform.position).normalized;
 
-        if (yPressed || bPressed) 
+        if (yPressed || bPressed)
         {
             xrRig.transform.position += direction * climbSpeed * Time.deltaTime;
             if (audioSource != null && !audioSource.isPlaying)
@@ -130,7 +130,8 @@ public class VRLadderClimb : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        
+        // buggy 
+        /*
         Transform cameraTransform = Camera.main.transform;
         float cameraYaw = cameraTransform.eulerAngles.y;
 
@@ -143,9 +144,10 @@ public class VRLadderClimb : MonoBehaviour
 
         Vector3 currentEuler = xrRig.transform.eulerAngles;
         Quaternion targetRotation = Quaternion.Euler(0f, currentEuler.y + yawOffset, 0f);
+        */
 
-        StartCoroutine(SmoothRotate(targetRotation));
         EnableLocomotion();
+        // StartCoroutine(SmoothRotate(targetRotation));
     }
 
     private void DisableLocomotion()
