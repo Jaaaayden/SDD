@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class TriggerSnap : MonoBehaviour
@@ -8,7 +9,7 @@ public class TriggerSnap : MonoBehaviour
     private SnapZone currentZone = null;
     private XRGrabInteractable grab;
     private Transform interactorTransform;
-
+    public TextMeshPro text;
     private void Awake()
     {
         grab = GetComponent<XRGrabInteractable>();
@@ -44,8 +45,21 @@ public class TriggerSnap : MonoBehaviour
 
         if (currentZone != null)
         {
-            transform.position = currentZone.snapPoint.position + new Vector3(0, transform.GetChild(0).GetComponent<Collider>().bounds.extents.y, transform.GetChild(0).GetComponent<Collider>().bounds.extents.z);
-            transform.rotation = currentZone.snapPoint.parent.rotation;
+            Vector3 offset = Vector3.zero;
+            try
+            {
+
+                // Use localScale instead of collider bounds to avoid rotation affecting extents
+                Vector3 localExtents = transform.GetChild(0).GetComponent<Collider>().bounds.size * 0.5f;
+                offset = new Vector3(localExtents.x, localExtents.y * 2, 0);
+                text.text = offset.ToString();
+            }
+            catch (System.Exception e)
+            {
+                text.text = e.ToString();
+            }
+            transform.position = currentZone.snapPoint.position + offset;
+            transform.rotation = currentZone.snapPoint.parent.rotation; 
         }
     }
 
