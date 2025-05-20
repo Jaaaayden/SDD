@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnapZone : MonoBehaviour
+public class ENGSnapZone : MonoBehaviour
 {
     public GameObject snapPointObj;
     public Transform snapPoint;

@@ -1063,25 +1063,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8359657111372111234, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
---- !u!1 &1100459530241920666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1802610119772840029, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}
-  m_PrefabInstance: {fileID: 1603763357512822471}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2269451289154387138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100459530241920666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f9aee49f1b8d6499e212b7e66f1e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snapPointObj: {fileID: 1100459530241920666}
-  snapPoint: {fileID: 0}
 --- !u!4 &6530538819498956801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5539590484343961286, guid: daa135ab74fd17b42b14d58a51b2258e, type: 3}

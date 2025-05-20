@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class TriggerSnap : MonoBehaviour
+public class ENGTriggerSnap : MonoBehaviour
 {
-    private SnapZone currentZone = null;
+    private ENGSnapZone currentZone = null;
     private XRGrabInteractable grab;
     private GameObject[] attachPoints;
     public TextMeshPro text;
@@ -20,7 +20,7 @@ public class TriggerSnap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.TryGetComponent(out SnapZone zone))
+        if (other.TryGetComponent(out ENGSnapZone zone))
         {
             if (currentZone == null)
                 currentZone = zone;
@@ -29,7 +29,7 @@ public class TriggerSnap : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out SnapZone zone) && currentZone == zone)
+        if (other.TryGetComponent(out ENGSnapZone zone) && currentZone == zone)
         {
             currentZone = null;
         }
