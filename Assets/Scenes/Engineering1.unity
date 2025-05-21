@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 26234030}
   - component: {fileID: 26234029}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: lightPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4036,7 +4036,7 @@ GameObject:
   - component: {fileID: 1751579334}
   - component: {fileID: 1751579333}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: lightPlane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
