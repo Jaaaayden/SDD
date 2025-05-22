@@ -9,7 +9,7 @@ public class VRLadderClimb : MonoBehaviour
     public Transform platformTarget;
     public GameObject xrRig;
 
-    public float climbSpeed = 1.5f;
+    public float climbSpeed = 20f;
     public float walkDuration = 0.75f;
     public float lockDuration = 1.0f;
 
@@ -142,10 +142,10 @@ public class VRLadderClimb : MonoBehaviour
         float yawOffset = desiredYaw - cameraYaw;
 
         Vector3 currentEuler = xrRig.transform.eulerAngles;
-        Quaternion targetRotation = Quaternion.Euler(0f, currentEuler.y + yawOffset, 0f);
+        Quaternion targetRotation = Quaternion.Euler(0f, currentEuler.y + yawOffset, 0f);   
 
+        yield return StartCoroutine(SmoothRotate(targetRotation));
         EnableLocomotion();
-        StartCoroutine(SmoothRotate(targetRotation));
     }
 
     private void DisableLocomotion()
@@ -156,7 +156,16 @@ public class VRLadderClimb : MonoBehaviour
 
     private void EnableLocomotion()
     {
-        if (moveProvider != null) moveProvider.enabled = true;
-        if (turnProvider != null) turnProvider.enabled = true;
+        if (moveProvider != null)
+        {
+            moveProvider.enabled = false; // testing if i need to set back to false beforehand
+            moveProvider.enabled = true;
+        }
+
+        if (turnProvider != null)
+        {
+            turnProvider.enabled = false;
+            turnProvider.enabled = true;
+        }
     }
 }
