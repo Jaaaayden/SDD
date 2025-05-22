@@ -130,8 +130,7 @@ public class VRLadderClimb : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        // buggy 
-        /*
+
         Transform cameraTransform = Camera.main.transform;
         float cameraYaw = cameraTransform.eulerAngles.y;
 
@@ -144,10 +143,9 @@ public class VRLadderClimb : MonoBehaviour
 
         Vector3 currentEuler = xrRig.transform.eulerAngles;
         Quaternion targetRotation = Quaternion.Euler(0f, currentEuler.y + yawOffset, 0f);
-        */
 
         EnableLocomotion();
-        // StartCoroutine(SmoothRotate(targetRotation));
+        StartCoroutine(SmoothRotate(targetRotation));
     }
 
     private void DisableLocomotion()
